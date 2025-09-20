@@ -1,78 +1,77 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Console.WriteLine("Hello 123");
 ﻿using System;
-using System.Collections.Generic;
 
 /// <summary>
-/// Chương trình minh họa cách kiểm tra và liệt kê số nguyên tố.
-/// Mục tiêu: trình bày phong cách lập trình rõ ràng, có chú thích chi tiết.
+/// Đây là chương trình minh họa phong cách lập trình chuẩn mực.
+/// Nhiệm vụ: Tính toán dãy Fibonacci bằng phương pháp đệ quy và lặp,
+/// đồng thời so sánh hiệu năng.
 /// </summary>
 class Program
 {
     /// <summary>
-    /// Hàm main – điểm bắt đầu chương trình.
+    /// Hàm main – điểm bắt đầu của chương trình.
     /// </summary>
     static void Main(string[] args)
     {
-        Console.WriteLine("=== CHƯƠNG TRÌNH KIỂM TRA SỐ NGUYÊN TỐ ===");
+        Console.WriteLine("=== CHƯƠNG TRÌNH TÍNH DÃY FIBONACCI ===");
+        Console.Write("Nhập số n: ");
+        int n = int.Parse(Console.ReadLine() ?? "0");
 
-        Console.Write("Nhập một số để kiểm tra: ");
-        int number = int.Parse(Console.ReadLine() ?? "0");
-
-        if (IsPrime(number))
+        // Tính Fibonacci bằng đệ quy
+        Console.WriteLine("\nPhương pháp đệ quy:");
+        for (int i = 0; i <= 10; i++)
         {
-            Console.WriteLine($"{number} là số nguyên tố.");
-        }
-        else
-        {
-            Console.WriteLine($"{number} KHÔNG phải là số nguyên tố.");
+            Console.Write($"{FibonacciRecursive(i)} ");
         }
 
-        Console.Write("\nNhập giới hạn trên để liệt kê các số nguyên tố từ 2 đến n: ");
-        int limit = int.Parse(Console.ReadLine() ?? "0");
+        // Tính Fibonacci bằng lặp
+        Console.WriteLine("\n\nPhương pháp lặp:");
+        for (int i = 0; i <= 100; i++)
+        {
+            Console.Write($"{SuperFibonacciIterative(i)} ");
+        }
 
-        List<int> primes = GeneratePrimes(limit);
-
-        Console.WriteLine($"\nCác số nguyên tố từ 2 đến {limit}:");
-        Console.WriteLine(string.Join(", ", primes));
-
-        Console.WriteLine("\n--- KẾT THÚC CHƯƠNG TRÌNH ---");
+        Console.WriteLine("\n\n--- KẾT THÚC CHƯƠNG TRÌNH ---");
     }
 
     /// <summary>
-    /// Kiểm tra một số có phải là số nguyên tố hay không.
+    /// Tính số Fibonacci thứ n bằng đệ quy.
+    /// Công thức: F(n) = F(n-1) + F(n-2), với F(0)=0, F(1)=1.
     /// </summary>
-    /// <param name="n">Số cần kiểm tra.</param>
-    /// <returns>true nếu n là số nguyên tố, ngược lại false.</returns>
-    static bool IsPrime(int n)
+    static int FibonacciRecursive(int n)
     {
-        if (n < 2) return false;
-        if (n == 2) return true;
-        if (n % 2 == 0) return false;
-
-        // Chỉ cần kiểm tra tới căn bậc hai của n
-        int boundary = (int)Math.Sqrt(n);
-
-        for (int i = 3; i <= boundary; i += 2)
-        {
-            if (n % i == 0) return false;
-        }
-
-        return true;
+        if (n <= 1) return n;
+        return FibonacciRecursive(n - 1) + FibonacciRecursive(n - 2);
     }
 
     /// <summary>
-    /// Sinh danh sách các số nguyên tố từ 2 đến n.
+    /// Tính số Fibonacci thứ n bằng phương pháp lặp (hiệu quả hơn).
     /// </summary>
-    /// <param name="n">Giới hạn trên.</param>
-    /// <returns>Danh sách số nguyên tố.</returns>
-    static List<int> GeneratePrimes(int n)
+    static int FibonacciIterative(int n)
     {
-        List<int> primes = new List<int>();
+        if (n <= 1) return n;
+
+        int prev1 = 0, prev2 = 1, result = 0;
         for (int i = 2; i <= n; i++)
         {
-            if (IsPrime(i)) primes.Add(i);
+            result = prev1 + prev2;
+            prev1 = prev2;
+            prev2 = result;
         }
-        return primes;
+        return result;
+    }
+    static int SuperFibonacciIterative(int n)
+    {
+        if (n <= 1) return n;
+
+        int prev1 = 0, prev2 = 1, result = 0;
+        for (int i = 2; i <= n; i++)
+        {
+            result = prev1 + prev2;
+            prev1 = prev2;
+            prev2 = result;
+        }
+        return result*10*10;
     }
 }
