@@ -1,5 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello 123");
 ﻿using System;
 using System.Collections.Generic;
 
@@ -7,55 +5,55 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("=== CHƯƠNG TRÌNH KIỂM TRA SỐ NGUYÊN TỐ ===");
+        Console.WriteLine("=== CHƯƠNG TRÌNH KIỂM TRA SỐ ARMSTRONG ===");
 
         Console.Write("Nhập một số để kiểm tra: ");
         int number = int.Parse(Console.ReadLine() ?? "0");
 
-        if (IsPrime(number))
+        if (IsArmstrong(number))
         {
-            Console.WriteLine($"{number} là số nguyên tố.");
+            Console.WriteLine($"{number} là số Armstrong.");
         }
         else
         {
-            Console.WriteLine($"{number} KHÔNG phải là số nguyên tố.");
+            Console.WriteLine($"{number} KHÔNG phải là số Armstrong.");
         }
 
-        Console.Write("\nNhập giới hạn trên để liệt kê các số nguyên tố từ 2 đến n: ");
+        Console.Write("\nNhập giới hạn trên để liệt kê các số Armstrong từ 1 đến n: ");
         int limit = int.Parse(Console.ReadLine() ?? "0");
 
-        List<int> primes = GeneratePrimes(limit);
+        List<int> armstrongNumbers = GenerateArmstrongNumbers(limit);
 
-        Console.WriteLine($"\nCác số nguyên tố từ 2 đến {limit}:");
-        Console.WriteLine(string.Join(", ", primes));
+        Console.WriteLine($"\nCác số Armstrong từ 1 đến {limit}:");
+        Console.WriteLine(string.Join(", ", armstrongNumbers));
 
         Console.WriteLine("\n--- KẾT THÚC CHƯƠNG TRÌNH ---");
     }
 
-    static bool IsPrime(int n)
+    // Hàm kiểm tra số Armstrong
+    static bool IsArmstrong(int n)
     {
-        if (n < 2) return false;
-        if (n == 2) return true;
-        if (n % 2 == 0) return false;
+        string s = n.ToString();
+        int power = s.Length;
+        int sum = 0;
 
-        // Chỉ cần kiểm tra tới căn bậc hai của n
-        int boundary = (int)Math.Sqrt(n);
-
-        for (int i = 3; i <= boundary; i += 2)
+        foreach (char c in s)
         {
-            if (n % i == 0) return false;
+            int digit = c - '0';
+            sum += (int)Math.Pow(digit, power);
         }
 
-        return true;
+        return sum == n;
     }
 
-    static List<int> GeneratePrimes(int n)
+    // Sinh danh sách số Armstrong
+    static List<int> GenerateArmstrongNumbers(int n)
     {
-        List<int> primes = new List<int>();
-        for (int i = 2; i <= n; i++)
+        List<int> armstrongNumbers = new List<int>();
+        for (int i = 1; i <= n; i++)
         {
-            if (IsPrime(i)) primes.Add(i);
+            if (IsArmstrong(i)) armstrongNumbers.Add(i);
         }
-        return primes;
+        return armstrongNumbers;
     }
 }
