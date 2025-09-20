@@ -3,15 +3,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-/// <summary>
-/// Chương trình minh họa cách kiểm tra và liệt kê số nguyên tố.
-/// Mục tiêu: trình bày phong cách lập trình rõ ràng, có chú thích chi tiết.
-/// </summary>
 class Program
 {
-    /// <summary>
-    /// Hàm main – điểm bắt đầu chương trình.
-    /// </summary>
     static void Main(string[] args)
     {
         Console.WriteLine("=== CHƯƠNG TRÌNH KIỂM TRA SỐ NGUYÊN TỐ ===");
@@ -39,11 +32,6 @@ class Program
         Console.WriteLine("\n--- KẾT THÚC CHƯƠNG TRÌNH ---");
     }
 
-    /// <summary>
-    /// Kiểm tra một số có phải là số nguyên tố hay không.
-    /// </summary>
-    /// <param name="n">Số cần kiểm tra.</param>
-    /// <returns>true nếu n là số nguyên tố, ngược lại false.</returns>
     static bool IsPrime(int n)
     {
         if (n < 2) return false;
@@ -61,11 +49,6 @@ class Program
         return true;
     }
 
-    /// <summary>
-    /// Sinh danh sách các số nguyên tố từ 2 đến n.
-    /// </summary>
-    /// <param name="n">Giới hạn trên.</param>
-    /// <returns>Danh sách số nguyên tố.</returns>
     static List<int> GeneratePrimes(int n)
     {
         List<int> primes = new List<int>();
