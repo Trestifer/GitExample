@@ -16,7 +16,7 @@ class Program
         }
         else
         {
-            Console.WriteLine($"{number} KHÔNG phải là số Armstrong.");
+            Console.WriteLine($"{number}  là số Armstrong.");
         }
 
         Console.Write("\nNhập giới hạn trên để liệt kê các số Armstrong từ 1 đến n: ");
