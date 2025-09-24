@@ -29,14 +29,14 @@ class Program
 
         Console.WriteLine("\n--- KẾT THÚC CHƯƠNG TRÌNH ---");
 
-        Console.WriteLine("\n--- TEST CONFLICT IN BRANCH HIEUTHUHAI ---");
+        Console.WriteLine("\n--- TEST CONFLICT IN BRANCH HIEUTHUHAI AND HIEUTHUBA ---");
     }
 
     // Hàm kiểm tra số Armstrong
     static bool IsArmstrong(int n)
     {
         string s = n.ToString();
-        int power = s.Length;
+        int power = s.Length; 
         int sum = 0;
 
         foreach (char c in s)
