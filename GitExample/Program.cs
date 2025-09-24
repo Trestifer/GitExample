@@ -28,6 +28,8 @@ class Program
         Console.WriteLine(string.Join(", ", armstrongNumbers));
 
         Console.WriteLine("\n--- KẾT THÚC CHƯƠNG TRÌNH ---");
+
+        Console.WriteLine("\n--- TEST CONFLICT ---");
     }
 
     // Hàm kiểm tra số Armstrong
