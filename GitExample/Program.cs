@@ -29,7 +29,7 @@ class Program
 
         Console.WriteLine("\n--- KẾT THÚC CHƯƠNG TRÌNH ---");
 
-        Console.WriteLine("\n--- TEST CONFLICT ---");
+        Console.WriteLine("\n--- TEST CONFLICT IN BRANCH HIEUTHUBA ---");
     }
 
     // Hàm kiểm tra số Armstrong
